@@ -16,3 +16,10 @@ class ItemList(object):
   def __str__(self):
     return '\n'.join([str(item) for item in self.items])
 
+  def __len__(self):
+    return len(self.items)
+
+  def __getitem__(self, key):
+    '''given a key returns the associated item'''
+    return self.items[key]
+
