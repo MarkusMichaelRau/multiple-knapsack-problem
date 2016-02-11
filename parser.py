@@ -1,6 +1,7 @@
 from os.path import abspath
 from yaml import load
 from item import Item
+from knapsack import Knapsack
 
 class RcParser(object):
   def __init__(self):
@@ -33,4 +34,12 @@ class ItemParser(object):
 
   def __str__(self):
     return ''.join([str(item) + '\n' for item in self.items])
+
+class KnapsackParser(object):
+
+  def __init__(self, knapsacks):
+    self.knapsacks = [Knapsack(knapsack) for knapsack in knapsacks]
+
+  def __str__(self):
+    return ''.join([str(knapsack) + '\n' for knapsack in self.knapsacks])
 
