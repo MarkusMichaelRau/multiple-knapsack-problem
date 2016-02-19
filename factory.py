@@ -16,3 +16,16 @@ class ChromosomeFactory(object):
       return '0' + '0' if self.item_vals[randint(0, 1)] == '0' else '1' + self.knapsack_vals[randint(1, self.m)]
     return Chromosome(''.join([combine() for item_knapsack in range(self.n)]))
 
+
+class PopulationFactory(object):
+
+  def __init__(self, p, n, m):
+    self.p = p #population size
+    self.n = n #number of items
+    self.m = m #number of knapsacks
+
+  def gen(self):
+    '''generates a population of size n'''
+    f = ChromosomeFactory(self.n, self.m)
+    return Population([f.gen() for i in range(self.p)])
+
