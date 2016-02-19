@@ -10,3 +10,9 @@ class ChromosomeFactory(object):
     self.item_vals = ['1', '0']
     self.knapsack_vals = [str(knapsack) for knapsack in range(0, m + 1)]
 
+   def gen(self):
+    '''generates a random chromosome'''
+    def combine():
+      return '0' + '0' if self.item_vals[randint(0, 1)] == '0' else '1' + self.knapsack_vals[randint(1, self.m)]
+    return Chromosome(''.join([combine() for item_knapsack in range(self.n)]))
+
