@@ -18,4 +18,12 @@ class FitnessFunction(object):
     '''returns fitness of chromosomes in knapsack m'''
     if self.sum_item_attribute(m, 'weight') > self.get_knapsack_capacity(m - 1):
        self.random_repair(choice(range(1, len(self.chromosome), 2)), m)
-    return self.sum_item_attribute(m, 'profit') 
+    return self.sum_item_attribute(m, 'profit')
+
+  def sum_all_fitness(self):
+    '''returns total fitness of this chromosome'''
+    fsum = 0
+    for knapsack in range(1, RcParser().get_m() + 1):
+      fsum = fsum + self.sum_single_fitness(knapsack)
+    return fsum
+ 
