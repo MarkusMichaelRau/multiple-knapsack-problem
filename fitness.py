@@ -1,4 +1,7 @@
-
+from random import choice
+from chromosome import Chromosome
+from item import ItemList
+from parser import ItemParser, RcParser
 
 class FitnessFunction(object):
 
