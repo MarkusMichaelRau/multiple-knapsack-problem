@@ -26,4 +26,18 @@ class FitnessFunction(object):
     for knapsack in range(1, RcParser().get_m() + 1):
       fsum = fsum + self.sum_single_fitness(knapsack)
     return fsum
+
+ def random_repair(self, i):
+    '''transforms an infeasible solution into a feasible solution by random repair'''
+    print('random repar')
+    while self.chromosome[i] != '1':
+      i = choice(range(1, len(self.chromosome), 2))
+      print('index ' + str(i))
+      if self.chromosome[i] == '1':
+        c = Chromosome(self.chromosome[0:i] + '00' + self.chromosome[i + 2: len(self.chromosome)])
+        self.chromosome = c
+        self.knapsack_items_map = ItemList(ItemParser(RcParser().get_rc_items()).items).get_all_on_items(c, RcParser().get_m())
+        return
+        #return FitnessFunction(self.knapsacks, c, ItemList(ItemParser(RcParser().get_rc_items()).items).get_all_on_items(c, len(self.knapsacks)))
+    #return self
  
