@@ -48,4 +48,24 @@ if __name__ == '__main__':
 
     probability = 100
     mutated_children = []
+    for i in range(2):
+      mutated_children.append(Mutation(children[i], probability).exe())      #mutate offspring
+
+    i = 0
+    for chromosome in population: #replace current population with new one
+      if str(chromosome) == str(parents[0]):
+        population[i] = mutated_children[0]
+        i = i + 1
+      elif str(chromosome) == str(parents[1]):
+        population[i] = mutated_children[1]
+        i = i + 1
+      else:
+        i = i + 1
+
+    #get list of fitness for each individual
+    fsums = []
+    for i in range(p):
+      fitness_function = FitnessFunction(population[i], items.get_all_on_items(population[i].solution, m))
+      fsums.append(fitness_function.sum_all_fitness())
+      population[i] = fitness_function.chromosome
   
