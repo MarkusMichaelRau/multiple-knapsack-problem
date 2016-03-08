@@ -68,4 +68,36 @@ if __name__ == '__main__':
       fitness_function = FitnessFunction(population[i], items.get_all_on_items(population[i].solution, m))
       fsums.append(fitness_function.sum_all_fitness())
       population[i] = fitness_function.chromosome
+
+    #get fittest individual of current population
+    #print('fsums = ' + str(fsums))
+    max_fsum = max(fsums)
+    #print('this max fsum ' + str(max_fsum)) 
+    for i in range(p):
+      if float(fsums[i]) == float(max_fsum):
+        fittest_chromosome = population[i]
+
+    fittest_chromosomes.append(fittest_chromosome)
+    print('fittest solution from this population ' + str(fittest_chromosome) + ' where fsum = ' + str(max_fsum))
+    print('population fsum = ' + str(pop_fsum))
+    print(population)
+
+  fittest_fsums = []
+  for i in range(n):
+    fitness_function = FitnessFunction(fittest_chromosomes[i], items.get_all_on_items(fittest_chromosomes[i].solution, m))
+    fittest_fsums.append(fitness_function.sum_all_fitness())
+    if i < p:
+      population[i] = fitness_function.chromosome
+
+  print('fittest fsums = ' + str(fittest_fsums))
+
+  fittest_max_fsum = max(fittest_fsums)
+  for i in range(n):
+    if float(fittest_fsums[i]) == float(fittest_max_fsum):
+      final_chromosome = fittest_chromosomes[i]
+
+  print('fittest solutions from all populations \n \n' + str(Population(fittest_chromosomes)))
+  #f_max_fsum = fitness_function.sum_all_fitness()
+  #final_chromosome = fitness_function.chromosome
+  print('final fittest solution = ' + str(final_chromosome) + ', where fsum = ' + str(fittest_max_fsum))
   
