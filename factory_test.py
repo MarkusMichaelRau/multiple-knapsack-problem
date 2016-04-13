@@ -14,3 +14,15 @@ class ChromosomeFactoryTest(unittest.TestCase):
     self.assertEqual(len(c), expected_len)
     self.assertEqual(type(c), Chromosome)
 
+class PopulationFactoryTest(unittest.TestCase):
+
+  def test_gen(self):
+    n = 12
+    m = 3
+    p = 10
+
+    factory = PopulationFactory(p, n, m)
+    population = factory.gen()
+    self.assertEqual(len(population), p)
+    self.assertEqual(type(population), Population)
+
