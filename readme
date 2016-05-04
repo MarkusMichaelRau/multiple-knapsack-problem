@@ -2,5 +2,13 @@ to run the program run the following command:
 python mkp.py
 
 configuration of the settings is done via the rc.yaml file.
+In the config file:
 
+m = number of knapsacks
+n = number of items
+
+items is a list of lists, where each list holds the data to be parsed into an Item object. The format is [number, number, number], first index in the array is the index of the item, these must begin at 0 and increase by 2 each step. Second index is the profit and third index is the weight.
+
+ 
+knapsacks is a list of numbers that is parsed into the Knapsack Objects, each number is a capacity for that knapsack.
 
