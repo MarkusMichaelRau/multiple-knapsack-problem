@@ -1,0 +1,6 @@
+to run the program run the following command:
+python mkp.py
+
+configuration of the settings is done via the rc.yaml file.
+
+
