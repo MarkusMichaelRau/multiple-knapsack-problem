@@ -6,7 +6,7 @@ class Item(object):
     self.weight = weight
 
     def __str__(self):
-    return 'i = {0}, p = {1}, w = {2}'.format(self.index, self.profit, self.weight)
+      return 'i = {0}, p = {1}, w = {2}'.format(self.index, self.profit, self.weight)
 
 class ItemList(object):
 

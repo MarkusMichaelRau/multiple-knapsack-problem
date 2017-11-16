@@ -16,17 +16,13 @@ if __name__ == '__main__':
   knapsacks = KnapsackList(KnapsackParser(rc.get_rc_knapsacks()).knapsacks)
   n = rc.get_n()
   m = rc.get_m()
-  a = Chromosome('000013120000001300000011')
-  b = ChromosomeFactory(n, m).gen()
-  print('p1 = ' + str(a))
-  print('p2 = ' + str(b))
   print('number of knapsacks = {0}'.format(m))
   print('number of items = {0}'.format(n))
-  
-  p = 10
+
+  p = 50
   print('population size = ' + str(p))
   population = PopulationFactory(p, n, m).gen()
-  iterations = 100
+  iterations = 200
   fittest_chromosome = None
   fittest_chromosomes = []
   for _ in range(iterations):
@@ -72,7 +68,7 @@ if __name__ == '__main__':
     #get fittest individual of current population
     #print('fsums = ' + str(fsums))
     max_fsum = max(fsums)
-    #print('this max fsum ' + str(max_fsum)) 
+    #print('this max fsum ' + str(max_fsum))
     for i in range(p):
       if float(fsums[i]) == float(max_fsum):
         fittest_chromosome = population[i]
@@ -100,4 +96,10 @@ if __name__ == '__main__':
   #f_max_fsum = fitness_function.sum_all_fitness()
   #final_chromosome = fitness_function.chromosome
   print('final fittest solution = ' + str(final_chromosome) + ', where fsum = ' + str(fittest_max_fsum))
-  
+  result_knapsack = items.get_all_on_items(final_chromosome, m)
+  print result_knapsack
+  print('Knapsack 1')
+  print([el.index for el in result_knapsack[1]])
+
+  print('Knapsack 2')
+  print([el.index for el in result_knapsack[2]])

@@ -37,7 +37,7 @@ class FitnessFunction(object):
 
     if self.chromosome[i - 1] == '1':
       c = Chromosome(self.chromosome[0:i - 1] + '00' + self.chromosome[i + 1: len(self.chromosome)])
-      self.chromosome = c 
-      self.knapsack_items_map = ItemList(ItemParser(RcParser().get_rc_items()).items).get_all_on_items(c, len(self.knapsacks))
+      self.chromosome = c
+      self.knapsack_items_map = ItemList(ItemParser(RcParser().get_rc_items()).items).get_all_on_items(c, len(self.knapsack_items_map))
       return
 
